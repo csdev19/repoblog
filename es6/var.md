@@ -8,6 +8,9 @@ En javascript por hoisting la variables se predeclaran con valor undefined hasta
 Algo interesante de las funciones es su ejecucion y su ciclo de vida que destruye todo luego de su return
 
 
+## Ejemplos 
+
+
 1. Veamos si inicializando una variable dentro de una funcion instancia su memoria
 
 ```js
@@ -103,3 +106,33 @@ ejecutar()
 // HOISTING
 
 ```
+
+
+6. usando el bucle for algo interesante 
+
+```js
+
+  var cosas = [1,23,23,4546]
+  function ejecutar() {
+    //console.log('cosa', cosa)// Se cae
+   for (var cosa of cosas) {
+     console.log('cosa', cosa)
+   }
+   // La diferencia importante aqui es que con var la variable
+   for (let cosa of cosas) {
+     console.log('cosa', cosa)
+   }
+    console.log('cosa', cosa) // Existe aqui
+    // Sin var aqui no existe literal no hay referencia a este espacio de memoria
+  }
+
+```
+
+
+## Fuentes
+
+- [developer mozilla variables](https://developer.mozilla.org/es/docs/Learn/JavaScript/First_steps/Variables)
+- [you dont know javascript](https://github.com/getify/You-Dont-Know-JS/tree/2nd-ed/scope-closures)
+- [var vs let and const](https://tylermcginnis.com/var-let-const/)
+- [you dont know javascript closures](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/scope-closures/ch2.md)
+- 
