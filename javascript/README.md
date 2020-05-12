@@ -7,3 +7,7 @@
 - array methods
 - nullables
 - DOM
+- closures
+- callback
+- promesas
+- async/await
