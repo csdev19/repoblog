@@ -83,3 +83,23 @@ function ejecutar() {
 }
 
 ```
+
+5. sacado de la pagina de mozilla
+
+```js
+
+function ejecutar() {
+  console.log('hola 1', hola) // undefined
+  hola = 'holaaaaaa';
+  console.log('hola 2', hola) // holaaaa
+  var hola;
+  console.log('hola 1', hola) // holaaa
+}
+
+// si ejecturas esto
+ejecutar() 
+
+// nos daremos cuenta que el segundo console funciona aunque la variable no estaba declarada y eso es por el
+// HOISTING
+
+```
