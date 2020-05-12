@@ -1,6 +1,13 @@
 # Bueno, hablemos de var  en javascript con unos ejemplitos para ser breves
 
 
+## Teoria 
+
+En javascript por hoisting la variables se predeclaran con valor undefined hasta que son llenadas o en caso de que no lo hagamos seguira como undefined pero si reservada su instancia en la memoria.
+
+Algo interesante de las funciones es su ejecucion y su ciclo de vida que destruye todo luego de su return
+
+
 1. Veamos si inicializando una variable dentro de una funcion instancia su memoria
 
 ```js
