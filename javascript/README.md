@@ -1,5 +1,6 @@
 # Cosas vitales para todo desarrollador javascript
 
+- variables inicializacion
 - Hoisting
 - functions
 - objects and classes
