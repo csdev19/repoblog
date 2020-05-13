@@ -1,5 +1,6 @@
 
-// rxjs.of(1, 2, 3);
+const inter = rxjs.interval(100);
+
 console.log('hey')
 
 let cuenta = 0;
@@ -23,6 +24,9 @@ containerElement.appendChild(palabra)
 
 
 function hola(){
+  inter.subscribe(i => {
+    console.log('i', i)
+  })
   console.log('gola')
   cuenta++
   refreshCounter()
