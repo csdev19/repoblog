@@ -18,6 +18,8 @@ function refreshCounter() {
 }
 
 
+
+
 palabra.innerText = 'holaaaaaaaa'
 
 containerElement.appendChild(palabra)
