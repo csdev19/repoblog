@@ -62,7 +62,31 @@ Asi que ya no debe aparecernos el efecto de transicion con el color.
 }
 ```
 
-Pues ahora si aparece la transicion pero solo porque se hace mas grande. JA! interesante que pueda especficar a que darle una transicion
+Pues ahora si aparece la transicion pero solo porque se hace mas grande. JA! interesante que pueda especficar a que darle una transicion.
+
+Pero y si quiero darle distintos tipos de animacion ? digamos 3 o 2 o mas. Pues puedo pasarle varios atributos separados por comas
+
+```css
+#cajita {
+  width: 100px;
+  height: 100px;
+  background-color: aquamarine;
+  margin: auto;
+  transition-duration: 500ms;
+  transition-property: width, background-color, transform; /* puede ver que aqui ya agregue varias propiedades en las que quiero una transicion */
+}
+```
+
+
+AHORA, por defecto esta propiedades tiene distintos valores para autocompletarse:
+
+- all: esto seria como no poner nada, porque aplicara la transicion a todos los elementos
+- none: 
+- initial
+- inherit
+- unset
+
+
 
 
 

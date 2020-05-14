@@ -17,11 +17,12 @@ body {
   background-color: aquamarine;
   margin: auto;
   transition-duration: 500ms;
-  transition-property: width;
+  transition-property: width, background-color, transform;
 }
 
 #cajita:hover {
   background-color: crimson;
   width: 300px;
+  transform: rotate(45deg);
 }
 
