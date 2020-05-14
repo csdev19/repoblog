@@ -1,3 +1,7 @@
+/// Primero apred
+
+
+
 
 const inter = rxjs.interval(100);
 

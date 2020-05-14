@@ -6,5 +6,8 @@ Bueno, la verdad yo literal empece a aprender como controlar el dom para hacer e
 
 
 
-Aprendi a usar transiciones en CSS
+## Aprendi a usar transiciones en CSS
+
+
+primero, creare un example.css para poner ahi toda mi practica y no mover nada de lo real
 
