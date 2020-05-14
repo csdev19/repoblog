@@ -99,10 +99,38 @@ Los mas comunes son easy-in y easy-out.
 
 
 
+## transition-delay
+
+esto nos permite especificar en cuanto tiempo queremos que alguna accion pase 👀 osea yo quiero que si dejo el mouse en un elemento por mas de 1 segundos que este gire o haga algo. es interesante
+
+Solo necesita que le pase el tiempo que seria en ms o s
 
 
+## transition
 
+por ultimo podemos usar solo transition para indicar cada una de estas propiedades por ejemplos
 
+```css
+/* enves de */
+  transition-duration: 500ms;
+  transition-property: width, background-color, transform;
+  transition-timing-function: ease-in;
+  transition-delay: 2s;
+/* podemos poner */
+  transition: 500ms width ease-in 2s;
+```
+
+y funcionaria como si nada hubiera cambiado.
+
+PERO HAY MAS!!!!!!!
+
+con esto podemos hacer todo el comportamiento de un objeto. Como es eso ? mira
+
+```css
+  transition: 500ms width ease-in 2s, 250ms transform ease-in 2s;
+```
+
+Esto dice que primero cambie el tamaño y luego de que cambio en cierto tiempo que lo transforme 45grados :O esto tiene varios usos utiles para hacer toda una transicion 
 
 
 
