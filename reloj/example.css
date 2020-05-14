@@ -7,9 +7,13 @@ body {
 
 #main {
   display: flex;
+  flex-direction: column;
   height: 100%;
   min-height: 100%;
+  transition-duration: 3000ms;
 }
+
+
 
 #cajita {
   width: 100px;
@@ -18,7 +22,51 @@ body {
   margin: auto;
   transition-duration: 500ms;
   transition-property: width, background-color, transform;
+  transition-timing-function: ease-in;
 }
+
+.caja {
+  width: 100px;
+  height: 100px;
+}
+
+#cajita1 {
+  background-color: cyan;
+  transition-duration: 3000ms;
+  transition-timing-function: ease;
+}
+#cajita2 {
+  background-color: darkgoldenrod;
+  transition-duration: 3000ms;
+  transition-timing-function: linear;
+
+}
+#cajita3 {
+  transition-duration: 3000ms;
+  transition-timing-function: ease-in;
+  background-color: darkorchid;
+}
+#cajita4 {
+  transition-duration: 3000ms;
+  transition-timing-function: ease-out;
+  background-color: deeppink;
+}
+
+#cajita1:hover {
+  width: 500px;
+}
+#cajita2:hover {
+  width: 500px;
+}
+#cajita3:hover {
+  width: 500px;
+}
+#cajita4:hover {
+  width: 500px;
+}
+
+
+
 
 #cajita:hover {
   background-color: crimson;
