@@ -145,3 +145,4 @@ Esto dice que primero cambie el tamaño y luego de que cambio en cierto tiempo q
 
 - [sitio de guias para transformaciones 3d](https://3dtransforms.desandro.com/carousel)
 - [video de youtube buenisimo ](https://www.youtube.com/watch?v=Nloq6uzF8RQ)
+- [alguien haciendo el flip clock](https://www.youtube.com/watch?v=U2GrZAn0S-s)
