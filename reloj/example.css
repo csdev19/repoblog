@@ -16,9 +16,12 @@ body {
   height: 100px;
   background-color: aquamarine;
   margin: auto;
+  transition-duration: 500ms;
+  transition-property: width;
 }
 
 #cajita:hover {
   background-color: crimson;
+  width: 300px;
 }
 
