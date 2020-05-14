@@ -86,7 +86,7 @@ AHORA, por defecto esta propiedades tiene distintos valores para autocompletarse
 - inherit
 - unset
 
-
+Es mucho muy importante saber que cuando no especificamos una propiedad siempre estara a la escucha de todos los elementos por cualquier cambio, cosa que no queremos. Esto consume memoria y dejarlo escuchando todo si es un problema. Por eso lo mejor es escuchar solo lo que si cambiara
 
 
 
