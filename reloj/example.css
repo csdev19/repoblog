@@ -24,7 +24,7 @@ body {
   transition-property: width, background-color, transform;
   transition-timing-function: ease-in;
   transition-delay: 2s; */
-  transition: 500ms background-color ease-in 1s;
+  transition: 1000ms background-color ease-in 1s;
 
 }
 

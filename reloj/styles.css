@@ -53,6 +53,8 @@ body {
 
 
 .flip-clock-container * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
   user-select: none;
   cursor: default;
 }
@@ -60,7 +62,7 @@ body {
 .flip-clock {
   display: flex;
 
-  perspective: 100000px;
+  perspective: 1000px;
 }
 
 
@@ -131,7 +133,9 @@ body {
   -webkit-transition: transform .7s ease-in-out;
   -moz-transition: transform .7s ease-in-out;
 
-  transition: transform 500ms ease-in-out;
+  /* transition: transform 700ms ease-in-out; */
+  transition: transform 700ms ease-in-out;
+
 }
 
 .card.flipped {
