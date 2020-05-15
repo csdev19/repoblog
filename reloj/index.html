@@ -6,6 +6,7 @@
   <title>Este es mi relojito</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.5/rxjs.umd.min.js"></script>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="clock.css">
   <!-- <link rel="stylesheet" href="example.css"> -->
 </head> 
 <body>
@@ -14,7 +15,17 @@
   <div id="app">
     <div class="clock-container">
       <div class="clock">
-        <div class="digit" data-digit-before="0" data-digit-after="1">
+        <div class="digit digit-left" data-digit-before="0" data-digit-after="1">
+          <!-- before -->
+          <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-face card-face-front">0</div>
+            <div class="card-face card-face-back">1</div>
+          </div>
+          <!-- after -->
+        </div>
+
+
+        <div class="digit digit-right" data-digit-before="0" data-digit-after="1">
           <!-- before -->
           <div class="card" onclick="this.classList.toggle('flipped')">
             <div class="card-face card-face-front">0</div>
