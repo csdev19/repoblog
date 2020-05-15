@@ -12,7 +12,7 @@
   function initElements(type) {
     const els = [{}, {}];
 
-    if(!['s','m','h'].includes(type)) return els;
+    if( !['s','m','h'].includes(type) ) return els;
 
     const target = document.querySelector(`.clock-${type}`);
 
@@ -63,6 +63,7 @@
       for(const i of ['0', '1']) {
         const curr = now[`${t}${i}`];
         let next = +curr + 1;
+        console.log("runClock -> curr", curr)
 
         if (t === 'h') {
           if (i === '0') next = (next < 3) ? `${next}` : '0';
@@ -90,8 +91,29 @@
 
             el.digit.dataset.digitAfter = next;
             el.cardFaceB.textContent = el.digit.dataset.digitAfter;
-          } else {
+          } else if (el.digit.dataset.digitBefore !== curr){
+            el.card.addEventListener('transitioned', () => {
+              el.digit.dataset.digitBefore = curr;
+              el.cardFaceA.textContent = el.digit.dataset.digitBefore;
 
+              const cardClone = el.card.cloneNode(true);
+              cardClone.classList.remove('flipped');
+              el.digit.replaceChild(cardClone, el.card);
+              el.card = cardClone;
+
+              el.cardFaces = el.card.querySelectorAll('.card-face');
+              el.cardFaceA = el.cardFaces[0];
+              el.cardFaceB = el.cardFaces[1];
+
+
+              el.digit.dataset.digitAfter = next;
+              el.cardFaceB.textContent = el.digit.dataset.digitAfter;
+            }, { once : true });
+            if ( !el.card.classList.contains('flipped') ) {
+              el.card.classList.add('flipped');
+            } else {
+              el.card.classList.remove('flipped');
+            }
           }
         }
       }
