@@ -8,7 +8,7 @@
     m: initElements('m'),
     h: initElements('h'),
   }
-
+  console.log('els', els)
   function initElements(type) {
     const els = [{}, {}];
 
@@ -29,7 +29,13 @@
     
     
     el = els[1];
+    el.digit = target.querySelector('.digit-rigth');
+    el.card = target.querySelector('.card');
+    el.cardFaces = el.card.querySelectorAll('.card-face');
+    el.cardFaceA = el.cardFaces[0];
+    el.cardFaceB = el.cardFaces[1];
 
+    return els;
   }
 
   (function runClock() {
@@ -52,6 +58,45 @@
     now.s1 = now.s[1];
 
     console.log(now)
+
+    for(const t of Object.keys(els)) {
+      for(const i of ['0', '1']) {
+        const curr = now[`${t}${i}`];
+        let next = +curr + 1;
+
+        if (t === 'h') {
+          if (i === '0') next = (next < 3) ? `${next}` : '0';
+          if (i === '1') next = (next < 4) ? `${next}` : '0';
+        }
+
+        if (t === 'm') {
+          if (i === '0') next = (next < 6) ? `${next}` : '0';
+          if (i === '1') next = (next < 10) ? `${next}` : '0';
+        }
+
+        if (t === 's') {
+          if (i === '0') next = (next < 6) ? `${next}` : '0';
+          if (i === '1') next = (next < 10) ? `${next}` : '0';
+        }
+
+        const el = els[t][i];
+
+        if (el && el.digit) {
+          console.log("runClock -> el.digit", el.digit)
+          console.log("runClock -> el.digit", el.digit.dataset)
+          if (!el.digit.dataset.digitBefore) {
+            el.digit.dataset.digitBefore = curr;
+            el.cardFaceA.textContent = el.digit.dataset.digitBefore;
+
+            el.digit.dataset.digitAfter = next;
+            el.cardFaceB.textContent = el.digit.dataset.digitAfter;
+          } else {
+
+          }
+        }
+      }
+    }
+
     setTimeout(runClock, 1000);
   })()
 })()
