@@ -83,8 +83,6 @@
         const el = els[t][i];
 
         if (el && el.digit) {
-          console.log("runClock -> el.digit", el.digit)
-          console.log("runClock -> el.digit", el.digit.dataset)
           if (!el.digit.dataset.digitBefore) {
             el.digit.dataset.digitBefore = curr;
             el.cardFaceA.textContent = el.digit.dataset.digitBefore;
@@ -111,8 +109,6 @@
             }, { once : true });
             if ( !el.card.classList.contains('flipped') ) {
               el.card.classList.add('flipped');
-            } else {
-              el.card.classList.remove('flipped');
             }
           }
         }
