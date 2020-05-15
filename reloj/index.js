@@ -1,42 +1,39 @@
-
-
 (function () {
   'use strict';
 
   const els = {
     s: initElements('s'),
     m: initElements('m'),
-    h: initElements('h'),
+    h: initElements('h')
   }
-  console.log('els', els)
   function initElements(type) {
     const els = [{}, {}];
 
     if( !['s','m','h'].includes(type) ) return els;
 
-    const target = document.querySelector(`.clock-${type}`);
+    const target = document.querySelector(`.flip-clock-${type}`);
 
     if(!target) return els;
-    
+
     let el;
 
     el = els[0];
     el.digit = target.querySelector('.digit-left');
-    el.card = target.querySelector('.card');
+    el.card = el.digit.querySelector('.card');
     el.cardFaces = el.card.querySelectorAll('.card-face');
     el.cardFaceA = el.cardFaces[0];
     el.cardFaceB = el.cardFaces[1];
-    
-    
+
+
     el = els[1];
-    el.digit = target.querySelector('.digit-rigth');
-    el.card = target.querySelector('.card');
+    el.digit = target.querySelector('.digit-right');
+    el.card = el.digit.querySelector('.card');
     el.cardFaces = el.card.querySelectorAll('.card-face');
     el.cardFaceA = el.cardFaces[0];
     el.cardFaceB = el.cardFaces[1];
 
     return els;
-  }
+  };
 
   (function runClock() {
     const date = new Date();
@@ -57,13 +54,18 @@
     now.s0 = now.s[0];
     now.s1 = now.s[1];
 
-    console.log(now)
+    // console.log({
+    //   h0 : now.h0,
+    //   h1 : now.h1,
+    //   m0 : now.m0,
+    //   m1 : now.m1,
+    //   s0 : now.s0,
+    //   s1 : now.s1})
 
     for(const t of Object.keys(els)) {
       for(const i of ['0', '1']) {
         const curr = now[`${t}${i}`];
         let next = +curr + 1;
-        console.log("runClock -> curr", curr)
 
         if (t === 'h') {
           if (i === '0') next = (next < 3) ? `${next}` : '0';
@@ -82,6 +84,8 @@
 
         const el = els[t][i];
 
+        console.log("el.card.classList -> ", el.card.classList)
+
         if (el && el.digit) {
           if (!el.digit.dataset.digitBefore) {
             el.digit.dataset.digitBefore = curr;
@@ -89,8 +93,10 @@
 
             el.digit.dataset.digitAfter = next;
             el.cardFaceB.textContent = el.digit.dataset.digitAfter;
+
+
           } else if (el.digit.dataset.digitBefore !== curr){
-            el.card.addEventListener('transitioned', () => {
+            el.card.addEventListener('transitionend', function () {
               el.digit.dataset.digitBefore = curr;
               el.cardFaceA.textContent = el.digit.dataset.digitBefore;
 
@@ -107,7 +113,10 @@
               el.digit.dataset.digitAfter = next;
               el.cardFaceB.textContent = el.digit.dataset.digitAfter;
             }, { once : true });
+
+            console.log("runClock -> el.card.classList", el.card.classList)
             if ( !el.card.classList.contains('flipped') ) {
+              // console.log('algun filp?')
               el.card.classList.add('flipped');
             }
           }
