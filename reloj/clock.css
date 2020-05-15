@@ -131,7 +131,7 @@
 .digit::before,
 .card-face-back {
   background: linear-gradient(0, #1b1b1b, #242424, 50%, #444343);
-  color: #212121;
+  color: #c0c0c0;
   border-top: 1px solid white;
 
   border-top-left-radius: 0;
@@ -143,10 +143,31 @@
 .card-face-front{
   
   background: linear-gradient(0, #1b1b1b, #242424, 50%, #444343);
-  color: #212121;
+  color: #c0c0c0;
 
   border-bottom: 1px solid white;
 
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+
+
+
+.digit-left,
+.digit-left::before,
+.digit-left::after,
+.digit-left .card,
+.digit-left .card-face {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.digit-right,
+.digit-right::before,
+.digit-right::after,
+.digit-right .card,
+.digit-right .card-face {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+

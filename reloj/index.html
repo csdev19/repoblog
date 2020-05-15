@@ -14,7 +14,9 @@
 
   <div id="app">
     <div class="clock-container">
-      <div class="clock">
+
+      <div class="clock clock-hours">
+
         <div class="digit digit-left" data-digit-before="0" data-digit-after="1">
           <!-- before -->
           <div class="card" onclick="this.classList.toggle('flipped')">
@@ -24,6 +26,30 @@
           <!-- after -->
         </div>
 
+        <div class="digit digit-right" data-digit-before="0" data-digit-after="1">
+          <!-- before -->
+          <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-face card-face-front">0</div>
+            <div class="card-face card-face-back">1</div>
+          </div>
+          <!-- after -->
+        </div>
+
+
+      </div>
+
+      <div class="colon">:</div>
+
+      <div class="clock clock-minutes">
+
+        <div class="digit digit-left" data-digit-before="0" data-digit-after="1">
+          <!-- before -->
+          <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-face card-face-front">0</div>
+            <div class="card-face card-face-back">1</div>
+          </div>
+          <!-- after -->
+        </div>
 
         <div class="digit digit-right" data-digit-before="0" data-digit-after="1">
           <!-- before -->
@@ -33,6 +59,33 @@
           </div>
           <!-- after -->
         </div>
+
+
+      </div>
+
+      <div class="colon">:</div>
+
+      <div class="clock clock-seconds">
+
+        <div class="digit digit-left" data-digit-before="0" data-digit-after="1">
+          <!-- before -->
+          <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-face card-face-front">0</div>
+            <div class="card-face card-face-back">1</div>
+          </div>
+          <!-- after -->
+        </div>
+
+        <div class="digit digit-right" data-digit-before="0" data-digit-after="1">
+          <!-- before -->
+          <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-face card-face-front">0</div>
+            <div class="card-face card-face-back">1</div>
+          </div>
+          <!-- after -->
+        </div>
+
+
       </div>
     </div> 
   </div>
