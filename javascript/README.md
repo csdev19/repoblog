@@ -12,3 +12,5 @@
 - callback
 - promesas
 - async/await
+- import/export 
+- usar module con html
