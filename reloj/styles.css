@@ -1,7 +1,7 @@
 :root {
-  --neon-color: #2196f3;
+  --neon-color: #cf077f;
   --background: #1c1e1f;
-
+  --neon-letter: #b90370;
 }
 
 
@@ -27,18 +27,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
 }
 
+.title {
+  margin: 40px 0;
+}
 
 a {
-
-  /* margin: 100px; */
-
   position: relative;
   display: inline-block;
   padding: 15px 30px;
-  color: var(--neon-color);
+  color: #dfdfdf;
   text-transform: uppercase;
   letter-spacing: 4px;
   text-decoration: none;
@@ -48,7 +49,7 @@ a {
 }
 
 a:hover {
-  color: #255784;
+  color: var(--neon-letter);
   background: var(--neon-color);
   box-shadow: 0 0 10px var(--neon-color),
               0 0 40px var(--neon-color),
