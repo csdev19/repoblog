@@ -1,132 +1,143 @@
-(function () {
-  'use strict';
+// (function () {
+'use strict';
 
-  const els = {
-    s: initElements('s'),
-    m: initElements('m'),
-    h: initElements('h')
-  }
-  function initElements(type) {
-    const els = [{}, {}];
+const els = {
+  s: initElements('s'),
+  m: initElements('m'),
+  h: initElements('h')
+}
 
-    if( !['s','m','h'].includes(type) ) return els;
+function initElements(type) {
+  const els = [{}, {}];
 
-    const target = document.querySelector(`.flip-clock-${type}`);
+  if( !['s','m','h'].includes(type) ) return els;
 
-    if(!target) return els;
+  const target = document.querySelector(`.flip-clock-${type}`);
 
-    let el;
+  if(!target) return els;
 
-    el = els[0];
-    el.digit = target.querySelector('.digit-left');
-    el.card = el.digit.querySelector('.card');
-    el.cardFaces = el.card.querySelectorAll('.card-face');
-    el.cardFaceA = el.cardFaces[0];
-    el.cardFaceB = el.cardFaces[1];
+  let el;
+
+  el = els[0];
+  el.digit = target.querySelector('.digit-left');
+  el.card = el.digit.querySelector('.card');
+  el.cardFaces = el.card.querySelectorAll('.card-face');
+  el.cardFaceA = el.cardFaces[0];
+  el.cardFaceB = el.cardFaces[1];
 
 
-    el = els[1];
-    el.digit = target.querySelector('.digit-right');
-    el.card = el.digit.querySelector('.card');
-    el.cardFaces = el.card.querySelectorAll('.card-face');
-    el.cardFaceA = el.cardFaces[0];
-    el.cardFaceB = el.cardFaces[1];
+  el = els[1];
+  el.digit = target.querySelector('.digit-right');
+  el.card = el.digit.querySelector('.card');
+  el.cardFaces = el.card.querySelectorAll('.card-face');
+  el.cardFaceA = el.cardFaces[0];
+  el.cardFaceB = el.cardFaces[1];
 
-    return els;
-  };
+  return els;
+};
 
-  function runClock() {
-    const date = new Date();
-    const now = {
-      h: date.getHours(),
-      m: date.getMinutes(),
-      s: date.getSeconds(),
-    }
+function runClock(now, type_counter) {
 
-    now.h = now.h < 10 ? `0${now.h}` : `${now.h}`;
-    now.m = now.m < 10 ? `0${now.m}` : `${now.m}`;
-    now.s = now.s < 10 ? `0${now.s}` : `${now.s}`;
+  for(const t of Object.keys(els)) {
+    for(const i of ['0', '1']) {
+      const curr = now[`${t}${i}`];
+      let next = (type_counter === 'plus') ? +curr + 1 : +curr - 1;
 
-    now.h0 = now.h[0];
-    now.h1 = now.h[1];
-    now.m0 = now.m[0];
-    now.m1 = now.m[1];
-    now.s0 = now.s[0];
-    now.s1 = now.s[1];
+      next = next < 0 ? `9` : `${next}`;
 
-    for(const t of Object.keys(els)) {
-      for(const i of ['0', '1']) {
-        const curr = now[`${t}${i}`];
-        let next = +curr + 1;
+      if (t === 'h') {
+        if (i === '0') next = (next < 3) ? `${next}` : '0';
+        if (i === '1') next = (next < 4) ? `${next}` : '0';
+      }
 
-        if (t === 'h') {
-          if (i === '0') next = (next < 3) ? `${next}` : '0';
-          if (i === '1') next = (next < 4) ? `${next}` : '0';
-        }
+      if (t === 'm') {
+        if (i === '0') next = (next < 6) ? `${next}` : '0';
+        if (i === '1') next = (next < 10) ? `${next}` : '0';
+      }
 
-        if (t === 'm') {
-          if (i === '0') next = (next < 6) ? `${next}` : '0';
-          if (i === '1') next = (next < 10) ? `${next}` : '0';
-        }
+      if (t === 's') {
+        if (i === '0') next = (next < 6) ? `${next}` : '0';
+        if (i === '1') next = (next < 10) ? `${next}` : '0';
+      }
 
-        if (t === 's') {
-          if (i === '0') next = (next < 6) ? `${next}` : '0';
-          if (i === '1') next = (next < 10) ? `${next}` : '0';
-        }
+      const el = els[t][i];
 
-        const el = els[t][i];
+      if (el && el.digit) {
+        if (!el.digit.dataset.digitBefore) {
+          console.log('1')
+          el.digit.dataset.digitBefore = curr;
+          el.cardFaceA.textContent = el.digit.dataset.digitBefore;
 
-        console.log("el.card.classList -> ", el.card.classList)
+          el.digit.dataset.digitAfter = next;
+          el.cardFaceB.textContent = el.digit.dataset.digitAfter;
 
-        if (el && el.digit) {
-          if (!el.digit.dataset.digitBefore) {
+
+        } else if (el.digit.dataset.digitBefore !== curr){
+          console.log('2  ')
+
+          el.card.addEventListener('transitionend', function () {
             el.digit.dataset.digitBefore = curr;
             el.cardFaceA.textContent = el.digit.dataset.digitBefore;
 
+            const cardClone = el.card.cloneNode(true);
+            cardClone.classList.remove('flipped');
+            el.digit.replaceChild(cardClone, el.card);
+            el.card = cardClone;
+
+            el.cardFaces = el.card.querySelectorAll('.card-face');
+            el.cardFaceA = el.cardFaces[0];
+            el.cardFaceB = el.cardFaces[1];
+
+
             el.digit.dataset.digitAfter = next;
             el.cardFaceB.textContent = el.digit.dataset.digitAfter;
+          }, { once : true });
 
-
-          } else if (el.digit.dataset.digitBefore !== curr){
-            el.card.addEventListener('transitionend', function () {
-              el.digit.dataset.digitBefore = curr;
-              el.cardFaceA.textContent = el.digit.dataset.digitBefore;
-
-              const cardClone = el.card.cloneNode(true);
-              cardClone.classList.remove('flipped');
-              el.digit.replaceChild(cardClone, el.card);
-              el.card = cardClone;
-
-              el.cardFaces = el.card.querySelectorAll('.card-face');
-              el.cardFaceA = el.cardFaces[0];
-              el.cardFaceB = el.cardFaces[1];
-
-
-              el.digit.dataset.digitAfter = next;
-              el.cardFaceB.textContent = el.digit.dataset.digitAfter;
-            }, { once : true });
-
-            console.log("runClock -> el.card.classList", el.card.classList)
-            if ( !el.card.classList.contains('flipped') ) {
-              // console.log('algun filp?')
-              el.card.classList.add('flipped');
-            }
+          if ( !el.card.classList.contains('flipped') ) {
+            // console.log('algun filp?')
+            el.card.classList.add('flipped');
           }
         }
       }
     }
-
-    // setTimeout(runClock, 1000);
   }
 
-  
-  const inter = rxjs.interval(1000);
-  inter.subscribe(d => {
-    console.log('da', d)
-    runClock()
-  })
-})()
+  // setTimeout(runClock, 1000);
+}
 
+
+const inter = rxjs.interval(1000);
+const date = new Date();
+
+
+inter.subscribe(d => {
+
+  let copiaDate = new Date(date.getTime());
+
+  copiaDate.setSeconds(copiaDate.getSeconds() - d);
+
+  console.log("runClock -> copiaDate", copiaDate)
+
+
+  const now = {
+    h: copiaDate.getHours(),
+    m: copiaDate.getMinutes(),
+    s: copiaDate.getSeconds(),
+  }
+
+
+  now.h = now.h < 10 ? `0${now.h}` : `${now.h}`;
+  now.m = now.m < 10 ? `0${now.m}` : `${now.m}`;
+  now.s = now.s < 10 ? `0${now.s}` : `${now.s}`;
+
+  now.h0 = now.h[0];
+  now.h1 = now.h[1];
+  now.m0 = now.m[0];
+  now.m1 = now.m[1];
+  now.s0 = now.s[0];
+  now.s1 = now.s[1];
+  runClock(now, 'minus');
+})
 
 
 
