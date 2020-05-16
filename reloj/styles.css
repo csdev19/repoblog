@@ -1,6 +1,7 @@
 :root {
   --neon-color: #2196f3;
-  --background: #008080;
+  --background: #1c1e1f;
+
 }
 
 
@@ -32,7 +33,7 @@ body {
 
 a {
 
-  margin: 100px;
+  /* margin: 100px; */
 
   position: relative;
   display: inline-block;
@@ -119,3 +120,6 @@ a:hover span:nth-child(4) {
   transition: 1000ms;
   transition-delay: 750ms;
 }
+
+
+
