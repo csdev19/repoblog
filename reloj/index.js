@@ -35,7 +35,7 @@
     return els;
   };
 
-  (function runClock() {
+  function runClock() {
     const date = new Date();
     const now = {
       h: date.getHours(),
@@ -53,14 +53,6 @@
     now.m1 = now.m[1];
     now.s0 = now.s[0];
     now.s1 = now.s[1];
-
-    // console.log({
-    //   h0 : now.h0,
-    //   h1 : now.h1,
-    //   m0 : now.m0,
-    //   m1 : now.m1,
-    //   s0 : now.s0,
-    //   s1 : now.s1})
 
     for(const t of Object.keys(els)) {
       for(const i of ['0', '1']) {
@@ -124,8 +116,15 @@
       }
     }
 
-    setTimeout(runClock, 1000);
-  })()
+    // setTimeout(runClock, 1000);
+  }
+
+  
+  const inter = rxjs.interval(1000);
+  inter.subscribe(d => {
+    console.log('da', d)
+    runClock()
+  })
 })()
 
 
@@ -139,7 +138,6 @@
 
 
 
-const inter = rxjs.interval(100);
 
 console.log('hey')
 
