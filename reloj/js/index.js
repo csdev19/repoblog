@@ -1,5 +1,9 @@
+
+import runClock from '../clock.js';
+// console.log("clock", clock)
+
 // (function () {
-'use strict';
+// 'use strict';
 
 const els = {
   s: initElements('s'),
@@ -101,8 +105,6 @@ function runClock(now, type_counter) {
       }
     }
   }
-
-  // setTimeout(runClock, 1000);
 }
 
 
@@ -116,7 +118,6 @@ inter.subscribe(d => {
 
   copiaDate.setSeconds(copiaDate.getSeconds() - d);
 
-  console.log("runClock -> copiaDate", copiaDate)
 
 
   const now = {
@@ -136,6 +137,7 @@ inter.subscribe(d => {
   now.m1 = now.m[1];
   now.s0 = now.s[0];
   now.s1 = now.s[1];
+
   runClock(now, 'minus');
 })
 
