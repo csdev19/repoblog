@@ -1,10 +1,4 @@
 
-import runClock from '../clock.js';
-// console.log("clock", clock)
-
-// (function () {
-// 'use strict';
-
 const els = {
   s: initElements('s'),
   m: initElements('m'),
