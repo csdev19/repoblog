@@ -108,9 +108,11 @@ const date = new Date();
 
 inter.subscribe(d => {
 
-  let copiaDate = new Date(date.getTime());
+  // let copiaDate = new Date(date.getTime());
+  let copiaDate = new Date();
 
-  copiaDate.setSeconds(copiaDate.getSeconds() - d);
+  // copiaDate.setSeconds(copiaDate.getSeconds() - d);
+  // copiaDate.setSeconds(copiaDate.getSeconds() + d);
 
 
 
@@ -132,10 +134,10 @@ inter.subscribe(d => {
   now.s0 = now.s[0];
   now.s1 = now.s[1];
 
-  runClock(now, 'minus');
+  // runClock(now, 'minus');
+  runClock(now, 'plus');
+  
 })
-
-
 
 /*
 
