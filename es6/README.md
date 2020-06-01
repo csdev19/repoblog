@@ -3,7 +3,9 @@
 
 ## Lista de cosas a hacer
 
+- declaracion de variables
 - var, let, const
+- tipos de variables
 - arrow functions
 - rest and spread operators
 - template literals
@@ -15,3 +17,6 @@
 ## Recursos
 
 - https://www.twilio.com/blog/2017/08/http-requests-in-node-js.html
+
+- [pagina oficial de mozzila recursos buenisimos](https://hacks.mozilla.org/category/es6-in-depth/)
+- 
